@@ -18,7 +18,10 @@ const ProductItem: FC<Props> = ({ product }) => {
       <div className='product-details'>
         <h2>{title}</h2>
         <p>{description}</p>
-        <h4>${price}</h4>
+        <div className='add-to-cart'>
+          <h4>${price}</h4>
+          <button>Add To Cart</button>
+        </div>
       </div>
     </div>
   );

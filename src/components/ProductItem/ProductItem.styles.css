@@ -33,3 +33,24 @@
 .product-details h4 {
   color: white;
 }
+
+.add-to-cart {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  align-items: center;
+}
+
+.add-to-cart button {
+  background: none;
+  padding: 0.6rem;
+  border: 1px solid grey;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.add-to-cart button:hover {
+  color: grey;
+  border: 1px solid white;
+  cursor: pointer;
+}
