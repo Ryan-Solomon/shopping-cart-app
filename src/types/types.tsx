@@ -1,6 +1,6 @@
 import { StringLiteral } from 'typescript';
 
-type TProduct = {
+export type TProduct = {
   id: number;
   title: string;
   price: number;

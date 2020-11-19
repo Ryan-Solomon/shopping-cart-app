@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppContext } from '../../context/AppContext';
+import ProductItem from '../ProductItem/ProductItem';
 
 const ProductItems = () => {
   const { products, status } = useAppContext();
@@ -8,11 +9,11 @@ const ProductItems = () => {
   if (status === 'loading') return <h1>Loading...</h1>;
 
   return (
-    <>
+    <main className='product-items-container'>
       {products.map((product) => {
-        return <h1>{product.title}</h1>;
+        return <ProductItem key={product.id} product={product} />;
       })}
-    </>
+    </main>
   );
 };
 
