@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppContext } from '../../context/AppContext';
 import ProductItem from '../ProductItem/ProductItem';
+import './ProductItems.styles.css';
 
 const ProductItems = () => {
   const { products, status } = useAppContext();

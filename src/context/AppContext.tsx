@@ -12,7 +12,7 @@ const AppContext = React.createContext<TInitialContext>(initialContext);
 
 export const AppProvider: FC<ReactNode> = ({ children }) => {
   const { products, status } = useFetchProducts(
-    'https://fakestoreapi.com/products?limit=10'
+    'https://fakestoreapi.com/products?limit=20'
   );
 
   return (
