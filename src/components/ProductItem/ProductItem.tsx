@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { useAppContext } from '../../context/AppContext';
 import { TProduct } from '../../types/types';
 import './ProductItem.styles.css';
 
@@ -8,6 +9,7 @@ type Props = {
 
 const ProductItem: FC<Props> = ({ product }) => {
   const { title, price, description, image } = product;
+  const { addToCart } = useAppContext();
 
   return (
     <div className='product-card'>
@@ -20,7 +22,7 @@ const ProductItem: FC<Props> = ({ product }) => {
         <p>{description}</p>
         <div className='add-to-cart'>
           <h4>${price}</h4>
-          <button>Add To Cart</button>
+          <button onClick={() => addToCart(product)}>Add To Cart</button>
         </div>
       </div>
     </div>

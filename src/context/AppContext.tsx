@@ -21,6 +21,7 @@ const AppContext = React.createContext<TInitialContext>(initialContext);
 
 export const AppProvider: FC<ReactNode> = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialState);
+  console.log(cart);
 
   const { products, status } = useFetchProducts(
     'https://fakestoreapi.com/products?limit=20'
