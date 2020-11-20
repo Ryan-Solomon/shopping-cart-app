@@ -9,17 +9,8 @@ export const initialState: TCart = {
 export function cartReducer(state = initialState, action: TAction) {
   switch (action.type) {
     case 'ADD_TO_CART':
-      const newItems = state.items.map((item) => {
-        if (item.id === action.payload.id) {
-          return { ...item, count: item.count + 1 };
-        } else {
-          return { ...item, count: item.count };
-        }
-      });
-
       return {
-        items:
-          newItems.length > 0 ? newItems : [{ ...action.payload, count: 1 }],
+        items: [...state.items, action.payload],
         itemCount: state.itemCount + 1,
         totalPrice: state.totalPrice + action.payload.price,
       };

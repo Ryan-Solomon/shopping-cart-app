@@ -1,0 +1,25 @@
+.cart-item {
+  display: flex;
+  padding: 1rem;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.cart-item img {
+  width: 20%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.item-details {
+  margin: 1rem 2.5rem;
+}
+
+.item-details h2 {
+  margin-bottom: 1rem;
+}
+
+.item-details select {
+  margin-top: 1rem;
+  padding: 0.25rem;
+}
