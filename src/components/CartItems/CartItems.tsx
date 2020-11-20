@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAppContext } from '../../context/AppContext';
+import CartItem from './../CartItem/CartItem';
 
 const CartItems = () => {
   const { cart } = useAppContext();
@@ -8,7 +9,6 @@ const CartItems = () => {
     <main className='cart-container'>
       {cart.items.map((item) => {
         return <CartItem key={item.id} cartItem={item} />;
-        // Now, need to add a cart item so I can show it on the page
       })}
     </main>
   );
