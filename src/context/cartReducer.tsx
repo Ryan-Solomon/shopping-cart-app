@@ -13,12 +13,16 @@ export function cartReducer(state = initialState, action: TAction) {
         if (item.id === action.payload.id) {
           return { ...item, count: item.count + 1 };
         } else {
-          return item;
+          return { ...item };
         }
       });
+      console.log(action.payload.count);
 
       return {
-        items: newCartItems.length < 1 ? [action.payload] : newCartItems,
+        items:
+          newCartItems.length < 1
+            ? [{ ...action.payload, count: 1 }]
+            : newCartItems,
         itemCount: state.itemCount + 1,
         totalPrice: state.totalPrice + action.payload.price,
       };
