@@ -7,9 +7,6 @@ type Props = {
   cartItem: TProduct;
 };
 
-// Need to add functionality to just increase or decrease
-// the count of item rather than creating new items
-
 const CartItem: FC<Props> = ({ cartItem }) => {
   const { selectNumberOfItems } = useAppContext();
 
