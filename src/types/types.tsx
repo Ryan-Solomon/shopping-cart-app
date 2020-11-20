@@ -15,6 +15,7 @@ export type TInitialContext = {
   addToCart: (item: TProduct) => void;
   removeFromCart: (item: TProduct) => void;
   clearCart: () => void;
+  selectNumberOfItems: (item: TProduct, quantity: number) => void;
 };
 
 export type TCart = {

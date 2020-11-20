@@ -15,6 +15,7 @@ const initialContext: TInitialContext = {
   addToCart: () => null,
   removeFromCart: () => null,
   clearCart: () => null,
+  selectNumberOfItems: (item: TProduct, quantity: number) => null,
 };
 
 const AppContext = React.createContext<TInitialContext>(initialContext);
@@ -64,6 +65,7 @@ export const AppProvider: FC<ReactNode> = ({ children }) => {
         addToCart,
         removeFromCart,
         clearCart,
+        selectNumberOfItems,
       }}
     >
       {children}

@@ -1,4 +1,5 @@
 import React, { ChangeEvent, FC } from 'react';
+import { useAppContext } from '../../context/AppContext';
 import { TProduct } from '../../types/types';
 import './CartItem.styles.css';
 
@@ -6,9 +7,14 @@ type Props = {
   cartItem: TProduct;
 };
 
+// Need to add functionality to just increase or decrease
+// the count of item rather than creating new items
+
 const CartItem: FC<Props> = ({ cartItem }) => {
+  const { selectNumberOfItems } = useAppContext();
+
   const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target);
+    selectNumberOfItems(cartItem, parseInt(event.target.value));
   };
 
   return (
@@ -17,11 +23,9 @@ const CartItem: FC<Props> = ({ cartItem }) => {
       <div className='item-details'>
         <h2>{cartItem.title}</h2>
         <p>{cartItem.description}</p>
-        <select onChange={(e) => handleSelect(e)}>
+        <select defaultValue='1' onChange={(e) => handleSelect(e)}>
           <option value='0'> Qty: 0 (delete)</option>
-          <option selected value='1'>
-            Qty: {cartItem.count || 1}
-          </option>
+          <option value='1'>Qty: {cartItem.count || 1}</option>
           <option value='2'> Qty: 2</option>
           <option value='3'> Qty: 3</option>
           <option value='4'> Qty: 4</option>

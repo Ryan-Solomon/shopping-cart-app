@@ -1,4 +1,4 @@
-import { TCart, TAction } from '../types/types';
+import { TCart, TAction, TProduct } from '../types/types';
 
 export const initialState: TCart = {
   items: [],
@@ -32,10 +32,32 @@ export function cartReducer(state = initialState, action: TAction) {
         count: action.payload.quantity,
       };
 
+      const newItemCount = state.items.reduce(
+        (acc: number, currItem: TProduct) => {
+          if (currItem.id === action.payload.item.id) {
+            return acc;
+          } else {
+            return acc + currItem.count;
+          }
+        },
+        action.payload.quantity
+      );
+
+      const newTotalPrice = state.items.reduce(
+        (runningPrice: number, item: TProduct) => {
+          if (item.id === action.payload.item.id) {
+            return runningPrice;
+          } else {
+            return runningPrice + item.price;
+          }
+        },
+        action.payload.item.price * action.payload.quantity
+      );
+
       return {
-        items: [],
-        itemCount: 0,
-        totalPrice: 0,
+        items: [...state.items, newItem],
+        itemCount: newItemCount,
+        totalPrice: newTotalPrice,
       };
     default:
       return { ...state };
