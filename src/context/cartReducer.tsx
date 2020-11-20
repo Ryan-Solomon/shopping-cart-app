@@ -26,6 +26,17 @@ export function cartReducer(state = initialState, action: TAction) {
         itemCount: 0,
         totalPrice: 0,
       };
+    case 'SELECT_NUMBER_OF_ITEMS':
+      const newItem = {
+        ...action.payload.item,
+        count: action.payload.quantity,
+      };
+
+      return {
+        items: [],
+        itemCount: 0,
+        totalPrice: 0,
+      };
     default:
       return { ...state };
   }

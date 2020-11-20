@@ -45,6 +45,16 @@ export const AppProvider: FC<ReactNode> = ({ children }) => {
     });
   };
 
+  const selectNumberOfItems = (item: TProduct, quantity: number) => {
+    dispatch({
+      type: 'SELECT_NUMBER_OF_ITEMS',
+      payload: {
+        item,
+        quantity,
+      },
+    });
+  };
+
   return (
     <AppContext.Provider
       value={{

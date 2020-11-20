@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ChangeEvent, FC } from 'react';
 import { TProduct } from '../../types/types';
 import './CartItem.styles.css';
 
@@ -7,13 +7,17 @@ type Props = {
 };
 
 const CartItem: FC<Props> = ({ cartItem }) => {
+  const handleSelect = (event: ChangeEvent<HTMLSelectElement>) => {
+    console.log(event.target);
+  };
+
   return (
     <div className='cart-item'>
       <img src={cartItem.image} alt={cartItem.title} />
       <div className='item-details'>
         <h2>{cartItem.title}</h2>
         <p>{cartItem.description}</p>
-        <select>
+        <select onChange={(e) => handleSelect(e)}>
           <option value='0'> Qty: 0 (delete)</option>
           <option selected value='1'>
             Qty: {cartItem.count || 1}

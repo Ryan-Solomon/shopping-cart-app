@@ -34,4 +34,11 @@ export type TAction =
     }
   | {
       type: 'CLEAR_CART';
+    }
+  | {
+      type: 'SELECT_NUMBER_OF_ITEMS';
+      payload: {
+        item: TProduct;
+        quantity: number;
+      };
     };
