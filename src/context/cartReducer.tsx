@@ -13,13 +13,12 @@ export function cartReducer(state = initialState, action: TAction) {
       const newCartItems = state.items.map((item) => {
         if (item.id === action.payload.id) {
           isInCart = true;
-          return { ...item, count: item.count + 1 };
+          console.log(item.count);
+          return { ...item, count: item.count + 1 || 1 };
         } else {
           return { ...item };
         }
       });
-
-      console.log(newCartItems);
 
       return {
         items:
@@ -27,7 +26,7 @@ export function cartReducer(state = initialState, action: TAction) {
             ? [{ ...action.payload, count: 1 }]
             : isInCart
             ? newCartItems
-            : [{ ...action.payload }, ...newCartItems],
+            : [{ ...action.payload, count: 1 }, ...newCartItems],
         itemCount: state.itemCount + 1,
         totalPrice: state.totalPrice + action.payload.price,
       };
@@ -71,8 +70,16 @@ export function cartReducer(state = initialState, action: TAction) {
         action.payload.item.price * action.payload.quantity
       );
 
+      const newItems = state.items.map((item) => {
+        if (item.id === action.payload.item.id) {
+          return newItem;
+        } else {
+          return { ...item };
+        }
+      });
+
       return {
-        items: [...state.items, newItem],
+        items: newItems,
         itemCount: newItemCount,
         totalPrice: newTotalPrice,
       };
